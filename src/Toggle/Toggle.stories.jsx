@@ -3,4 +3,6 @@ import React from 'react';
 
 import { Toggle } from './Toggle';
 
-storiesOf('Toggle').add('default', () => <Toggle />);
+storiesOf('Toggle')
+    .add('default (expand)', () => <Toggle />)
+    .add('hide', () => <Toggle expanded />);

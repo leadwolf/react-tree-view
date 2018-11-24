@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { Add } from '../icons/Add';
+import { Remove } from '../icons/Remove';
+
 const Toggle = ({ className, style, expanded }) => {
     return (
         <div className={`rtv-toggle ${className}`} style={style}>
-            {expanded}
+            {expanded ? <Remove /> : <Add />}
         </div>
     );
 };
