@@ -33,7 +33,7 @@ const Container = ({
             <Header
                 node={node}
                 style={{
-                    marginLeft: `${headerMarginLeft}px`,
+                    marginLeft: `${hasChildren ? headerMarginLeft : 4}px`, // align it with the icon's padding
                 }}
             />
         </div>
