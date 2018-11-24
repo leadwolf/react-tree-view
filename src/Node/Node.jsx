@@ -21,15 +21,15 @@ const getAnimation = node => ({
 const Node = ({ className, style, expandedNodeIds, node, onClick }) => {
     const isExpanded = expandedNodeIds.includes(node.id);
     const hasChildren = !!node.children;
+    const showChildren = hasChildren && isExpanded;
 
     return (
         <div className={`rtv-node ${className}`} style={style}>
             <Container expanded={isExpanded} node={node} onClick={onClick} />
-            <div className="rtv-node-children">
-                <VelocityTransitionGroup {...getAnimation(node)}>
-                    {hasChildren &&
-                        isExpanded &&
-                        node.children.map(child => (
+            <VelocityTransitionGroup {...getAnimation(node)}>
+                {showChildren && (
+                    <div className="rtv-node-children">
+                        {node.children.map(child => (
                             <Node
                                 key={child.id}
                                 className={className}
@@ -39,8 +39,9 @@ const Node = ({ className, style, expandedNodeIds, node, onClick }) => {
                                 onClick={onClick}
                             />
                         ))}
-                </VelocityTransitionGroup>
-            </div>
+                    </div>
+                )}
+            </VelocityTransitionGroup>
         </div>
     );
 };
