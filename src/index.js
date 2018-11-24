@@ -1,11 +1,7 @@
-import React, { Component } from 'react';
+import { Container } from './Container/Container.jsx';
+import { Header } from './Header/Header.jsx';
+import { Node } from './Node/Node.jsx';
+import { Tree } from './Tree/Tree.jsx';
+import { Toggle } from './Toggle/Toggle.jsx';
 
-export default class extends Component {
-    render() {
-        return (
-            <div>
-                <h2>Welcome to React components</h2>
-            </div>
-        );
-    }
-}
+export { Tree as default, Node, Container, Toggle, Header };
