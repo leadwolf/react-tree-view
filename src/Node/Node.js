@@ -35,7 +35,7 @@ const Node = ({
     const isExpanded = expandedNodeIds.includes(node.id);
     const hasChildren = !!node.children;
     const showChildren = hasChildren && isExpanded;
-    const { Node: NodeDecorator, Container: ContainerDecorator } = decorators;
+    const { Node: NodeDecorator = Node, Container: ContainerDecorator = Container } = decorators;
 
     return (
         <div className={`rtv-node ${className}`} style={style}>

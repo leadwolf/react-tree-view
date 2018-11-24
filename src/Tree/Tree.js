@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { defaultDecorators } from '../decorators';
+import { Node } from '../Node';
 import { decoratorsPropType, nodePropType } from '../proptypes';
 
 class Tree extends React.Component {
@@ -22,7 +23,7 @@ class Tree extends React.Component {
 
     render() {
         const { className, style, node, iconSize, headerMarginLeft, decorators } = this.props;
-        const { Node: NodeDecorator } = decorators;
+        const { Node: NodeDecorator = Node } = decorators;
         const { expandedNodeIds, selectedNodeId } = this.state;
 
         return (

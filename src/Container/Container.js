@@ -20,7 +20,7 @@ const Container = ({
     decorators,
 }) => {
     const hasChildren = !!node.children && !!node.children.length;
-    const { Toggle: ToggleDecorator, Header: HeaderDecorator } = decorators;
+    const { Toggle: ToggleDecorator = Toggle, Header: HeaderDecorator = Header } = decorators;
 
     return (
         <div
