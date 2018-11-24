@@ -1,12 +1,13 @@
 module.exports = {
-  type: 'react-component',
-  npm: {
-    esModules: true,
-    umd: {
-      global: 'ReactTreeView',
-      externals: {
-        react: 'React'
-      }
-    }
-  }
-}
+    type: 'react-component',
+    npm: {
+        esModules: true,
+        umd: {
+            global: 'ReactTreeView',
+            externals: {
+                react: 'React',
+                'velocity-react': 'VelocityReact',
+            },
+        },
+    },
+};
