@@ -36,9 +36,9 @@ Toggle.defaultProps = {
     style: undefined,
     expanded: false,
     getAnimation: expanded => ({
-        rotateZ: expanded ? 180 : 360,
+        rotateZ: expanded ? 180 : -180,
     }),
-    getDuration: expanded => (expanded ? 100 : 250),
+    getDuration: expanded => 200,
     iconSize: 24,
 };
 
