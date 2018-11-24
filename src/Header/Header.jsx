@@ -1,3 +1,5 @@
+import './header.scss';
+
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -18,6 +20,8 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
+    className: '',
+    style: undefined,
     node: { name: '' },
 };
 

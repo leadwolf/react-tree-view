@@ -1,0 +1,10 @@
+.rtv-container {
+    display: flex;
+    flex-direction: row;
+
+    cursor: pointer;
+
+    .rtv-header {
+        margin-left: 10px;
+    }
+}
