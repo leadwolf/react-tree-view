@@ -4,7 +4,7 @@ import React from 'react';
 import { Tree } from './Tree';
 import { dummyNode } from '../stories/node';
 
-storiesOf('Tree')
+storiesOf('Tree', module)
     .add('default', () => <Tree />)
     .add('with node', () => <Tree node={dummyNode} />)
     .add('expand root default', () => <Tree node={dummyNode} defaultExpandRoot />);

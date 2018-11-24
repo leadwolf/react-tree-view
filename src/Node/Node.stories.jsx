@@ -23,7 +23,7 @@ class StatefulNode extends React.Component {
     }
 }
 
-storiesOf('Node')
+storiesOf('Node', module)
     .add('default', () => <Node />)
     .add('with node', () => <Node node={dummyNode} />)
     .add('stateful example', () => <StatefulNode />);
