@@ -22,11 +22,9 @@
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook"
     },
-    "dependencies": {
-        "velocity-react": "^1.4.1"
-    },
     "peerDependencies": {
-        "react": "16.x"
+        "react": "16.x",
+        "velocity-react": "^1.4.x"
     },
     "devDependencies": {
         "@babel/core": "^7.1.6",
