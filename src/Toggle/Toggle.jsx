@@ -5,11 +5,18 @@ import { VelocityComponent } from 'velocity-react';
 import { Add } from '../icons/Add';
 import { Remove } from '../icons/Remove';
 
-const Toggle = ({ className, style, expanded, getAnimation, getDuration }) => {
+const Toggle = ({ className, style, expanded, getAnimation, getDuration, iconSize }) => {
     return (
-        <div className={`rtv-toggle ${className}`} style={style}>
+        <div
+            className={`rtv-toggle ${className}`}
+            style={{
+                height: `${iconSize}px`,
+                width: `${iconSize}px`,
+                ...style,
+            }}
+        >
             <VelocityComponent animation={getAnimation(expanded)} duration={getDuration(expanded)}>
-                {expanded ? <Remove /> : <Add />}
+                {expanded ? <Remove iconSize={iconSize} /> : <Add iconSize={iconSize} />}
             </VelocityComponent>
         </div>
     );
@@ -21,6 +28,7 @@ Toggle.propTypes = {
     expanded: PropTypes.bool,
     getAnimation: PropTypes.func,
     getDuration: PropTypes.func,
+    iconSize: PropTypes.number,
 };
 
 Toggle.defaultProps = {
@@ -31,6 +39,7 @@ Toggle.defaultProps = {
         rotateZ: expanded ? 180 : 360,
     }),
     getDuration: expanded => (expanded ? 100 : 250),
+    iconSize: 24,
 };
 
 export { Toggle };

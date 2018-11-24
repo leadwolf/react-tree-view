@@ -72,6 +72,8 @@ Node.propTypes = {
     onClick: PropTypes.func,
     expandedNodeIds: PropTypes.arrayOf(PropTypes.string),
     depth: PropTypes.number,
+    iconSize: PropTypes.number,
+    headerMarginLeft: PropTypes.number,
 };
 
 Node.defaultProps = {
@@ -81,6 +83,8 @@ Node.defaultProps = {
     onClick: undefined,
     expandedNodeIds: [],
     depth: 0,
+    iconSize: 24,
+    headerMarginLeft: 10,
 };
 
 export { Node };

@@ -28,7 +28,7 @@ const Container = ({
             }}
             onClick={() => onClick(node)}
         >
-            {hasChildren && <Toggle expanded={expanded} />}
+            {hasChildren && <Toggle expanded={expanded} iconSize={iconSize} />}
             <Header
                 node={node}
                 style={{
