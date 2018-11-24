@@ -1,7 +1,7 @@
-import { Container } from './Container/Container.jsx';
-import { Header } from './Header/Header.jsx';
-import { Node } from './Node/Node.jsx';
-import { Tree } from './Tree/Tree.jsx';
-import { Toggle } from './Toggle/Toggle.jsx';
+import { Container } from './Container';
+import { Header } from './Header';
+import { Node } from './Node';
+import { Tree } from './Tree';
+import { Toggle } from './Toggle';
 
 export { Tree as default, Node, Container, Toggle, Header };
