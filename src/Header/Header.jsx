@@ -22,7 +22,7 @@ Header.propTypes = {
 Header.defaultProps = {
     className: '',
     style: undefined,
-    node: { name: '' },
+    node: { id: '', name: '' },
 };
 
 export { Header };

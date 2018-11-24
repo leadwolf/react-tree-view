@@ -5,4 +5,4 @@ import { Header } from './Header';
 
 storiesOf('Header')
     .add('default', () => <Header />)
-    .add('with node', () => <Header node={{ name: 'this is the name of the node' }} />);
+    .add('with node', () => <Header node={{ id: '', name: 'this is the name of the node' }} />);
