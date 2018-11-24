@@ -3,9 +3,9 @@ import './tree.scss';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { nodePropType } from '../proptypes';
-
 import { Node } from '../Node';
+import { nodePropType } from '../proptypes';
+import { TreeContext } from '../TreeContext';
 
 class Tree extends React.Component {
     state = {
@@ -26,17 +26,19 @@ class Tree extends React.Component {
         const { expandedNodeIds, selectedNodeId } = this.state;
 
         return (
-            <div className={`rtv-tree ${className}`} style={style}>
-                <Node
-                    expandedNodeIds={expandedNodeIds}
-                    node={node}
-                    onClick={this.onClick}
-                    depth={0}
-                    iconSize={iconSize}
-                    headerMarginLeft={headerMarginLeft}
-                    selectedNodeId={selectedNodeId}
-                />
-            </div>
+            <TreeContext.Provider>
+                <div className={`rtv-tree ${className}`} style={style}>
+                    <Node
+                        expandedNodeIds={expandedNodeIds}
+                        node={node}
+                        onClick={this.onClick}
+                        depth={0}
+                        iconSize={iconSize}
+                        headerMarginLeft={headerMarginLeft}
+                        selectedNodeId={selectedNodeId}
+                    />
+                </div>
+            </TreeContext.Provider>
         );
     }
 }
