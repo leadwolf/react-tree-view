@@ -3,7 +3,9 @@ import './container.scss';
 import { PropTypes } from 'prop-types';
 import React from 'react';
 
+import { Header } from '../Header';
 import { decoratorsPropType, nodePropType } from '../proptypes';
+import { Toggle } from '../Toggle';
 
 const Container = ({
     className,
@@ -66,6 +68,10 @@ Container.defaultProps = {
     iconSize: 24,
     headerMarginLeft: 10,
     isSelected: false,
+    decorators: {
+        Toggle,
+        Header,
+    },
 };
 
 export { Container };

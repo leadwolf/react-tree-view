@@ -5,7 +5,9 @@ import React from 'react';
 import { VelocityTransitionGroup } from 'velocity-react';
 
 import { Container } from '../Container';
+import { Header } from '../Header';
 import { decoratorsPropType, nodePropType } from '../proptypes';
+import { Toggle } from '../Toggle';
 
 const getAnimation = node => ({
     enter: {
@@ -50,21 +52,26 @@ const Node = ({
             <VelocityTransitionGroup {...getAnimation(node)}>
                 {showChildren && (
                     <div className="rtv-node-children">
-                        {node.children.map(child => (
-                            <NodeDecorator
-                                key={child.id}
-                                className={className}
-                                style={style}
-                                expandedNodeIds={expandedNodeIds}
-                                node={child}
-                                onClick={onClick}
-                                depth={depth + 1}
-                                iconSize={iconSize}
-                                headerMarginLeft={headerMarginLeft}
-                                selectedNodeId={selectedNodeId}
-                                decorators={decorators}
-                            />
-                        ))}
+                        {node.children.map(child => {
+                            const childProps = {
+                                className,
+                                style,
+                                expandedNodeIds,
+                                node: child,
+                                onClick,
+                                depth: depth + 1,
+                                iconSize,
+                                headerMarginLeft,
+                                selectedNodeId,
+                                decorators,
+                            };
+
+                            return NodeDecorator ? (
+                                <NodeDecorator key={child.id} {...childProps} />
+                            ) : (
+                                <Node key={child.id} {...childProps} />
+                            );
+                        })}
                     </div>
                 )}
             </VelocityTransitionGroup>
@@ -95,6 +102,11 @@ Node.defaultProps = {
     iconSize: 24,
     headerMarginLeft: 10,
     selectedNodeId: undefined,
+    decorators: {
+        Container,
+        Toggle,
+        Header,
+    },
 };
 
 export { Node };
