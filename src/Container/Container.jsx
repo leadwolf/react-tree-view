@@ -9,7 +9,7 @@ import { Toggle } from '../Toggle';
 
 const Container = ({ className, style, expanded, node, onClick }) => {
     return (
-        <div className={`rtv-container ${className}`} style={style} onClick={onClick}>
+        <div className={`rtv-container ${className}`} style={style} onClick={() => onClick(node)}>
             <Toggle expanded={expanded} />
             <Header node={node} />
         </div>
