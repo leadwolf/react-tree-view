@@ -8,9 +8,11 @@ import { nodePropType } from '../proptypes';
 import { Toggle } from '../Toggle';
 
 const Container = ({ className, style, expanded, node, onClick }) => {
+    const hasChildren = !!node.children && !!node.children.length;
+
     return (
         <div className={`rtv-container ${className}`} style={style} onClick={() => onClick(node)}>
-            <Toggle expanded={expanded} />
+            {hasChildren && <Toggle expanded={expanded} />}
             <Header node={node} />
         </div>
     );
