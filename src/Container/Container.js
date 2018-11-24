@@ -62,7 +62,7 @@ Container.defaultProps = {
     className: '',
     style: undefined,
     expanded: false,
-    node: { name: '' },
+    node: { id: '', name: '' },
     onClick: undefined,
     depth: 0,
     iconSize: 24,

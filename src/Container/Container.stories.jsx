@@ -16,7 +16,7 @@ class StatefulContainer extends React.Component {
         return (
             <Container
                 expanded={expanded}
-                node={{ name: 'this is the name of the node, click me to toggle' }}
+                node={{ id: '', name: 'this is the name of the node, click me to toggle' }}
                 onClick={this.toggle}
             />
         );
@@ -25,5 +25,5 @@ class StatefulContainer extends React.Component {
 
 storiesOf('Container', module)
     .add('default', () => <Container />)
-    .add('with node', () => <Container node={{ name: 'this is the name of the node' }} />)
+    .add('with node', () => <Container node={{ id: '', name: 'this is the name of the node' }} />)
     .add('stateful example', () => <StatefulContainer />);
