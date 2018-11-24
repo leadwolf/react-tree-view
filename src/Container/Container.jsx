@@ -16,12 +16,13 @@ const Container = ({
     iconSize,
     headerMarginLeft,
     depth,
+    isSelected,
 }) => {
     const hasChildren = !!node.children && !!node.children.length;
 
     return (
         <div
-            className={`rtv-container ${className}`}
+            className={`rtv-container ${className} ${isSelected ? 'selected' : ''}`}
             style={{
                 paddingLeft: `${depth * iconSize + headerMarginLeft}px`,
                 ...style,
@@ -48,6 +49,7 @@ Container.propTypes = {
     depth: PropTypes.number,
     iconSize: PropTypes.number,
     headerMarginLeft: PropTypes.number,
+    isSelected: PropTypes.bool,
 };
 
 Container.defaultProps = {
@@ -59,6 +61,7 @@ Container.defaultProps = {
     depth: 0,
     iconSize: 24,
     headerMarginLeft: 10,
+    isSelected: false,
 };
 
 export { Container };

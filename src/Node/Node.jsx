@@ -27,6 +27,7 @@ const Node = ({
     depth,
     iconSize,
     headerMarginLeft,
+    selectedNodeId,
 }) => {
     const isExpanded = expandedNodeIds.includes(node.id);
     const hasChildren = !!node.children;
@@ -41,6 +42,7 @@ const Node = ({
                 depth={depth}
                 iconSize={iconSize}
                 headerMarginLeft={headerMarginLeft}
+                isSelected={selectedNodeId === node.id}
             />
             <VelocityTransitionGroup {...getAnimation(node)}>
                 {showChildren && (
@@ -56,6 +58,7 @@ const Node = ({
                                 depth={depth + 1}
                                 iconSize={iconSize}
                                 headerMarginLeft={headerMarginLeft}
+                                selectedNodeId={selectedNodeId}
                             />
                         ))}
                     </div>
@@ -74,6 +77,7 @@ Node.propTypes = {
     depth: PropTypes.number,
     iconSize: PropTypes.number,
     headerMarginLeft: PropTypes.number,
+    selectedNodeId: PropTypes.string,
 };
 
 Node.defaultProps = {
@@ -85,6 +89,7 @@ Node.defaultProps = {
     depth: 0,
     iconSize: 24,
     headerMarginLeft: 10,
+    selectedNodeId: '',
 };
 
 export { Node };

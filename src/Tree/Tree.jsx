@@ -10,6 +10,7 @@ import { Node } from '../Node';
 class Tree extends React.Component {
     state = {
         expandedNodeIds: [],
+        selectedNodeId: '',
     };
 
     onClick = node =>
@@ -17,11 +18,12 @@ class Tree extends React.Component {
             expandedNodeIds: expandedNodeIds.includes(node.id)
                 ? expandedNodeIds.filter(id => id !== node.id)
                 : [...expandedNodeIds, node.id],
+            selectedNodeId: node.id,
         }));
 
     render() {
         const { className, style, node, iconSize, headerMarginLeft } = this.props;
-        const { expandedNodeIds } = this.state;
+        const { expandedNodeIds, selectedNodeId } = this.state;
 
         return (
             <div className={`rtv-tree ${className}`} style={style}>
@@ -32,6 +34,7 @@ class Tree extends React.Component {
                     depth={0}
                     iconSize={iconSize}
                     headerMarginLeft={headerMarginLeft}
+                    selectedNodeId={selectedNodeId}
                 />
             </div>
         );
