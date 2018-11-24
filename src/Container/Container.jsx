@@ -7,13 +7,34 @@ import { Header } from '../Header';
 import { nodePropType } from '../proptypes';
 import { Toggle } from '../Toggle';
 
-const Container = ({ className, style, expanded, node, onClick }) => {
+const Container = ({
+    className,
+    style,
+    expanded,
+    node,
+    onClick,
+    iconSize,
+    headerMarginLeft,
+    depth,
+}) => {
     const hasChildren = !!node.children && !!node.children.length;
 
     return (
-        <div className={`rtv-container ${className}`} style={style} onClick={() => onClick(node)}>
+        <div
+            className={`rtv-container ${className}`}
+            style={{
+                paddingLeft: `${depth * iconSize + headerMarginLeft}px`,
+                ...style,
+            }}
+            onClick={() => onClick(node)}
+        >
             {hasChildren && <Toggle expanded={expanded} />}
-            <Header node={node} />
+            <Header
+                node={node}
+                style={{
+                    marginLeft: `${headerMarginLeft}px`,
+                }}
+            />
         </div>
     );
 };
@@ -24,6 +45,9 @@ Container.propTypes = {
     expanded: PropTypes.bool,
     node: nodePropType,
     onClick: PropTypes.func,
+    depth: PropTypes.number,
+    iconSize: PropTypes.number,
+    headerMarginLeft: PropTypes.number,
 };
 
 Container.defaultProps = {
@@ -32,6 +56,9 @@ Container.defaultProps = {
     expanded: false,
     node: { name: '' },
     onClick: undefined,
+    depth: 0,
+    iconSize: 24,
+    headerMarginLeft: 10,
 };
 
 export { Container };

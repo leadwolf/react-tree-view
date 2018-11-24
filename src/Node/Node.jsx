@@ -18,14 +18,30 @@ const getAnimation = node => ({
     },
 });
 
-const Node = ({ className, style, expandedNodeIds, node, onClick }) => {
+const Node = ({
+    className,
+    style,
+    expandedNodeIds,
+    node,
+    onClick,
+    depth,
+    iconSize,
+    headerMarginLeft,
+}) => {
     const isExpanded = expandedNodeIds.includes(node.id);
     const hasChildren = !!node.children;
     const showChildren = hasChildren && isExpanded;
 
     return (
         <div className={`rtv-node ${className}`} style={style}>
-            <Container expanded={isExpanded} node={node} onClick={onClick} />
+            <Container
+                expanded={isExpanded}
+                node={node}
+                onClick={onClick}
+                depth={depth}
+                iconSize={iconSize}
+                headerMarginLeft={headerMarginLeft}
+            />
             <VelocityTransitionGroup {...getAnimation(node)}>
                 {showChildren && (
                     <div className="rtv-node-children">
@@ -37,6 +53,9 @@ const Node = ({ className, style, expandedNodeIds, node, onClick }) => {
                                 expandedNodeIds={expandedNodeIds}
                                 node={child}
                                 onClick={onClick}
+                                depth={depth + 1}
+                                iconSize={iconSize}
+                                headerMarginLeft={headerMarginLeft}
                             />
                         ))}
                     </div>
@@ -52,6 +71,7 @@ Node.propTypes = {
     node: nodePropType,
     onClick: PropTypes.func,
     expandedNodeIds: PropTypes.arrayOf(PropTypes.string),
+    depth: PropTypes.number,
 };
 
 Node.defaultProps = {
@@ -60,6 +80,7 @@ Node.defaultProps = {
     node: { name: '', children: [] },
     onClick: undefined,
     expandedNodeIds: [],
+    depth: 0,
 };
 
 export { Node };
