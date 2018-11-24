@@ -23,6 +23,6 @@ class StatefulToggle extends React.Component {
 }
 
 storiesOf('Toggle', module)
-    .add('default (expand)', () => <Toggle />)
-    .add('hide', () => <Toggle expanded />)
-    .add('toggle example', () => <StatefulToggle />);
+    .add('default: !expanded', () => <Toggle />)
+    .add('expanded', () => <Toggle expanded />)
+    .add('animation example', () => <StatefulToggle />);

@@ -25,5 +25,7 @@ class StatefulContainer extends React.Component {
 
 storiesOf('Container', module)
     .add('default', () => <Container />)
-    .add('with node', () => <Container node={{ id: '', name: 'this is the name of the node' }} />)
+    .add('with node prop', () => (
+        <Container node={{ id: '', name: 'this is the name of the node' }} />
+    ))
     .add('stateful example', () => <StatefulContainer />);
