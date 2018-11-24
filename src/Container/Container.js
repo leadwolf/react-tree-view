@@ -25,12 +25,14 @@ const Container = ({
     return (
         <div
             className={`rtv-container ${className} ${isSelected ? 'selected' : ''}`}
-            style={{
-                paddingLeft: `${depth * iconSize + (depth ? headerMarginLeft : 0)}px`,
-                ...style,
-            }}
+            style={style}
             onClick={() => onClick(node)}
         >
+            <div
+                style={{
+                    paddingLeft: `${depth * iconSize + (depth ? headerMarginLeft : 0)}px`,
+                }}
+            />
             {hasChildren && (
                 <ToggleDecorator expanded={expanded} iconSize={iconSize} decorators={decorators} />
             )}
