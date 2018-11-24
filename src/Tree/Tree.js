@@ -9,7 +9,9 @@ import { decoratorsPropType, nodePropType } from '../proptypes';
 
 class Tree extends React.Component {
     state = {
-        expandedNodeIds: this.props.defaultExpandRoot ? [this.props.node.id] : [],
+        expandedNodeIds: this.props.defaultExpandRoot
+            ? [...this.props.roots.map(root => root.id)]
+            : [],
         selectedNodeId: undefined,
     };
 
@@ -22,16 +24,17 @@ class Tree extends React.Component {
         }));
 
     render() {
-        const { className, style, node, iconSize, headerMarginLeft, decorators } = this.props;
+        const { className, style, roots, iconSize, headerMarginLeft, decorators } = this.props;
         const { Node: NodeDecorator = Node } = decorators;
         const { expandedNodeIds, selectedNodeId } = this.state;
 
         return (
             <div className={`rtv-tree ${className}`} style={style}>
-                {!!node && (
+                {roots.map(root => (
                     <NodeDecorator
+                        key={root.id}
                         expandedNodeIds={expandedNodeIds}
-                        node={node}
+                        node={root}
                         onClick={this.onClick}
                         depth={0}
                         iconSize={iconSize}
@@ -39,7 +42,7 @@ class Tree extends React.Component {
                         selectedNodeId={selectedNodeId}
                         decorators={decorators}
                     />
-                )}
+                ))}
             </div>
         );
     }
@@ -48,7 +51,7 @@ class Tree extends React.Component {
 Tree.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
-    node: nodePropType,
+    node: PropTypes.arrayOf(nodePropType),
     defaultExpandRoot: PropTypes.bool,
     decorators: decoratorsPropType,
 };
@@ -56,7 +59,7 @@ Tree.propTypes = {
 Tree.defaultProps = {
     className: '',
     style: undefined,
-    node: undefined,
+    roots: [],
     defaultExpandRoot: false,
     decorators: defaultDecorators,
 };
