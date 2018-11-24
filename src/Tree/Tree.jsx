@@ -9,7 +9,7 @@ import { Node } from '../Node';
 
 class Tree extends React.Component {
     state = {
-        expandedNodeIds: [],
+        expandedNodeIds: this.props.defaultExpandRoot ? [this.props.node.id] : [],
         selectedNodeId: '',
     };
 
@@ -45,12 +45,14 @@ Tree.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
     node: nodePropType,
+    defaultExpandRoot: PropTypes.bool,
 };
 
 Tree.defaultProps = {
     className: '',
     style: undefined,
     node: { id: '', name: '' },
+    defaultExpandRoot: false,
 };
 
 export { Tree };

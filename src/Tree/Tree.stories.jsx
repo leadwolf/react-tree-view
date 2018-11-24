@@ -6,4 +6,5 @@ import { dummyNode } from '../stories/node';
 
 storiesOf('Tree')
     .add('default', () => <Tree />)
-    .add('with node', () => <Tree node={dummyNode} />);
+    .add('with node', () => <Tree node={dummyNode} />)
+    .add('expand root default', () => <Tree node={dummyNode} defaultExpandRoot />);
