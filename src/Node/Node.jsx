@@ -5,7 +5,7 @@ import React from 'react';
 import { VelocityTransitionGroup } from 'velocity-react';
 
 import { Container } from '../Container';
-import { nodePropType } from '../proptypes';
+import { decoratorsPropType, nodePropType } from '../proptypes';
 
 const getAnimation = node => ({
     enter: {
@@ -28,14 +28,16 @@ const Node = ({
     iconSize,
     headerMarginLeft,
     selectedNodeId,
+    decorators,
 }) => {
     const isExpanded = expandedNodeIds.includes(node.id);
     const hasChildren = !!node.children;
     const showChildren = hasChildren && isExpanded;
+    const { Node: NodeDecorator, Container: ContainerDecorator } = decorators;
 
     return (
         <div className={`rtv-node ${className}`} style={style}>
-            <Container
+            <ContainerDecorator
                 expanded={isExpanded}
                 node={node}
                 onClick={onClick}
@@ -43,12 +45,13 @@ const Node = ({
                 iconSize={iconSize}
                 headerMarginLeft={headerMarginLeft}
                 isSelected={selectedNodeId === node.id}
+                decorators={decorators}
             />
             <VelocityTransitionGroup {...getAnimation(node)}>
                 {showChildren && (
                     <div className="rtv-node-children">
                         {node.children.map(child => (
-                            <Node
+                            <NodeDecorator
                                 key={child.id}
                                 className={className}
                                 style={style}
@@ -59,6 +62,7 @@ const Node = ({
                                 iconSize={iconSize}
                                 headerMarginLeft={headerMarginLeft}
                                 selectedNodeId={selectedNodeId}
+                                decorators={decorators}
                             />
                         ))}
                     </div>
@@ -78,6 +82,7 @@ Node.propTypes = {
     iconSize: PropTypes.number,
     headerMarginLeft: PropTypes.number,
     selectedNodeId: PropTypes.string,
+    decorators: decoratorsPropType.isRequired,
 };
 
 Node.defaultProps = {
