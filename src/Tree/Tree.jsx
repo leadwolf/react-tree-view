@@ -10,7 +10,7 @@ import { TreeContext } from '../TreeContext';
 class Tree extends React.Component {
     state = {
         expandedNodeIds: this.props.defaultExpandRoot ? [this.props.node.id] : [],
-        selectedNodeId: '',
+        selectedNodeId: undefined,
     };
 
     onClick = node =>
@@ -28,15 +28,17 @@ class Tree extends React.Component {
         return (
             <TreeContext.Provider>
                 <div className={`rtv-tree ${className}`} style={style}>
-                    <Node
-                        expandedNodeIds={expandedNodeIds}
-                        node={node}
-                        onClick={this.onClick}
-                        depth={0}
-                        iconSize={iconSize}
-                        headerMarginLeft={headerMarginLeft}
-                        selectedNodeId={selectedNodeId}
-                    />
+                    {!!node && (
+                        <Node
+                            expandedNodeIds={expandedNodeIds}
+                            node={node}
+                            onClick={this.onClick}
+                            depth={0}
+                            iconSize={iconSize}
+                            headerMarginLeft={headerMarginLeft}
+                            selectedNodeId={selectedNodeId}
+                        />
+                    )}
                 </div>
             </TreeContext.Provider>
         );
@@ -53,7 +55,7 @@ Tree.propTypes = {
 Tree.defaultProps = {
     className: '',
     style: undefined,
-    node: { id: '', name: '' },
+    node: undefined,
     defaultExpandRoot: false,
 };
 

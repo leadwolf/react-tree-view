@@ -83,13 +83,13 @@ Node.propTypes = {
 Node.defaultProps = {
     className: '',
     style: undefined,
-    node: { name: '', children: [] },
+    node: { id: '', name: '', children: [] },
     onClick: undefined,
     expandedNodeIds: [],
     depth: 0,
     iconSize: 24,
     headerMarginLeft: 10,
-    selectedNodeId: '',
+    selectedNodeId: undefined,
 };
 
 export { Node };

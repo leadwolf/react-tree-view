@@ -24,7 +24,7 @@ const Container = ({
         <div
             className={`rtv-container ${className} ${isSelected ? 'selected' : ''}`}
             style={{
-                paddingLeft: `${depth * iconSize + headerMarginLeft}px`,
+                paddingLeft: `${depth * iconSize + (!!depth ? headerMarginLeft : 0)}px`,
                 ...style,
             }}
             onClick={() => onClick(node)}
