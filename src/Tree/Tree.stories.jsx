@@ -18,6 +18,7 @@ const TableRowContent = ({ node, hasChildren, indentLeft, expandedRowIds }) => (
             style={{
                 paddingLeft: `${indentLeft}px`,
             }}
+            className="main"
         >
             {hasChildren && <Toggle expanded={Boolean(expandedRowIds[node.id])} />}
 
@@ -94,17 +95,19 @@ storiesOf('Tree', module)
             <WithExpandedRowIdsState renderChildren={TableRow} />
         </Tree>
     ))
-    .add('multiple table example', () => (
-        <Tree>
-            <Header className="story-header">
-                <Cell className="story-header-cell">Id</Cell>
-                <Cell className="story-header-cell">Name</Cell>
-            </Header>
-            <WithExpandedRowIdsState renderChildren={TableRow} />
-            <Header className="story-header">
-                <Cell className="story-header-cell">Id</Cell>
-                <Cell className="story-header-cell">Name</Cell>
-            </Header>
-            <WithExpandedRowIdsState renderChildren={TableRow} />
-        </Tree>
+    .add('multiple roots example', () => (
+        <div className="story-tree-multi-roots">
+            <Tree>
+                <Header className="story-header">
+                    <Cell className="story-header-cell">Id</Cell>
+                    <Cell className="story-header-cell">Name</Cell>
+                </Header>
+                <WithExpandedRowIdsState renderChildren={TableRow} />
+                <Header className="story-header">
+                    <Cell className="story-header-cell">Id</Cell>
+                    <Cell className="story-header-cell">Name</Cell>
+                </Header>
+                <WithExpandedRowIdsState renderChildren={TableRow} />
+            </Tree>
+        </div>
     ));
