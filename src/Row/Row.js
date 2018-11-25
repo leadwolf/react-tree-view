@@ -6,12 +6,13 @@ import { VelocityTransitionGroup } from 'velocity-react';
 
 import { animations } from '../animations';
 import { defaultNode, nodePropType } from '../proptypes';
+import { DefaultContent, Indent } from './components';
 
 const Row = ({ node, depth, ...rest }) => {
     const {
         classes: { root: classNameRoot = '', content: classNameContent = '' },
         styles: { root: styleRoot = undefined, content: styleContent = undefined },
-        renderContent,
+        renderContent: CustomRenderContent,
         expandedRowIds,
         getAnimation,
         onClick,
@@ -24,24 +25,26 @@ const Row = ({ node, depth, ...rest }) => {
     const showChildren = hasChildren && isExpanded;
     const indentLeft = depth * 24;
 
+    const contentProps = {
+        node,
+        depth,
+        ...rest,
+        isExpanded,
+        hasChildren,
+        indentLeft,
+    };
+
     return (
         <div className={`rtv-row-container ${classNameRoot}`} style={styleRoot}>
-            {Boolean(renderContent) && (
-                <div
-                    className={`rtv-row-content ${classNameContent}`}
-                    style={styleContent}
-                    onClick={() => onClick(node)}
-                >
-                    {!noIndent && (
-                        <div
-                            style={{
-                                paddingLeft: `${indentLeft}px`,
-                            }}
-                        />
-                    )}
-                    {renderContent({ node, depth, ...rest, isExpanded, hasChildren, indentLeft })}
-                </div>
-            )}
+            <div
+                className={`rtv-row-content ${classNameContent}`}
+                style={styleContent}
+                onClick={() => onClick(node)}
+            >
+                {!noIndent && <Indent indentLeft={indentLeft} />}
+                {!CustomRenderContent && <DefaultContent {...contentProps} />}
+                {CustomRenderContent && <CustomRenderContent {...contentProps} />}
+            </div>
             {customRenderChildren &&
                 customRenderChildren({ node, depth, ...rest, isExpanded, hasChildren, indentLeft })}
             {!customRenderChildren && (
