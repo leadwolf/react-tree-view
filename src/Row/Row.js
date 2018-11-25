@@ -22,11 +22,11 @@ const Row = ({ node, depth, ...rest }) => {
     const showChildren = hasChildren && isExpanded;
 
     return (
-        <div className={`rtv-row-container ${classNameRoot}`} style={{ styleRoot }}>
+        <div className={`rtv-row-container ${classNameRoot}`} style={styleRoot}>
             {Boolean(renderContent) && (
                 <div
                     className={`rtv-row-content ${classNameContent}`}
-                    style={{ styleContent }}
+                    style={styleContent}
                     onClick={() => onClick(node)}
                 >
                     <div
