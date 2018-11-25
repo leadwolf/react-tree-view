@@ -10,6 +10,13 @@
         "lib",
         "umd"
     ],
+    "author": "Christopher Caroni",
+    "homepage": "https://react-tree-view.ccaroni.com",
+    "license": "MIT",
+    "repository": "https://github.com/Christopher-Caroni/react-tree-view",
+    "keywords": [
+        "react-component"
+    ],
     "scripts": {
         "build": "nwb build-react-component",
         "clean": "nwb clean-module && nwb clean-demo",
@@ -29,6 +36,7 @@
         "@storybook/addon-actions": "^4.0.8",
         "@storybook/addon-info": "^4.0.8",
         "@storybook/addon-links": "^4.0.8",
+        "@storybook/addon-storysource": "^4.0.8",
         "@storybook/addons": "^4.0.8",
         "@storybook/react": "^4.0.8",
         "babel-loader": "^8.0.4",
@@ -46,15 +54,5 @@
         "prettier": "^1.15.2",
         "react": "^16.6.3",
         "react-dom": "^16.6.3"
-    },
-    "author": "",
-    "homepage": "",
-    "license": "MIT",
-    "repository": "",
-    "keywords": [
-        "react-component"
-    ],
-    "dependencies": {
-        "@storybook/addon-storysource": "^4.0.8"
     }
 }
