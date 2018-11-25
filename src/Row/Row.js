@@ -16,6 +16,7 @@ const Row = ({ node, depth, ...rest }) => {
         getAnimation,
         onClick,
         noIndent,
+        renderChildren: customRenderChildren,
     } = rest;
 
     const isExpanded = Boolean(expandedRowIds[node.id]);
@@ -41,15 +42,19 @@ const Row = ({ node, depth, ...rest }) => {
                     {renderContent({ node, depth, ...rest, isExpanded, hasChildren, indentLeft })}
                 </div>
             )}
-            <VelocityTransitionGroup {...getAnimation(isExpanded, node)}>
-                {showChildren && (
-                    <div className="rtv-node-children">
-                        {node.children.map(child => (
-                            <Row key={child.id} node={child} {...rest} depth={depth + 1} />
-                        ))}
-                    </div>
-                )}
-            </VelocityTransitionGroup>
+            {customRenderChildren &&
+                customRenderChildren({ node, depth, ...rest, isExpanded, hasChildren, indentLeft })}
+            {!customRenderChildren && (
+                <VelocityTransitionGroup {...getAnimation(isExpanded, node)}>
+                    {showChildren && (
+                        <div className="rtv-node-children">
+                            {node.children.map(child => (
+                                <Row key={child.id} node={child} {...rest} depth={depth + 1} />
+                            ))}
+                        </div>
+                    )}
+                </VelocityTransitionGroup>
+            )}
         </div>
     );
 };
@@ -77,6 +82,12 @@ Row.propTypes = {
      * Receives all the props of the component plus `isExpanded`, `hasChildren` and `indentLeft`
      */
     renderContent: PropTypes.func,
+    /**
+     * Renders the div (VelocityTransitionGroup) containing the child nodes
+     * Receives the same props as `renderContent`
+     * Use this to replace the recursive mapping, or the transitions
+     */
+    renderChildren: PropTypes.func,
     /** The current depth of this row, used to calculate indentLeft given to `renderContent` */
     depth: PropTypes.number,
     /**
@@ -101,6 +112,7 @@ Row.defaultProps = {
     iconSize: 24,
     node: defaultNode,
     renderContent: undefined,
+    renderChildren: undefined,
     depth: 0,
     noIndent: false,
 };
