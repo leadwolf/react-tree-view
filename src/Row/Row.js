@@ -38,7 +38,7 @@ const Row = ({ node, depth, ...rest }) => {
         <div className={`rtv-row-container ${classNameRoot}`} style={styleRoot}>
             <div
                 className={`rtv-row-content ${classNameContent}`}
-                style={styleContent}
+                style={{ cursor: hasChildren ? 'pointer' : 'default', ...styleContent }}
                 onClick={() => onClick(node)}
             >
                 {!noIndent && <Indent indentLeft={indentLeft} />}
