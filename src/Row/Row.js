@@ -55,10 +55,12 @@ const Row = ({ node, depth, ...rest }) => {
 };
 
 Row.propTypes = {
+    /** CSS classes for the 'root' div and the 'content' div that wraps `renderContent` */
     classes: PropTypes.shape({
         root: PropTypes.string,
         content: PropTypes.string,
     }),
+    /** Inline styles for convenience */
     styles: PropTypes.shape({
         root: PropTypes.object,
         content: PropTypes.object,
@@ -67,10 +69,21 @@ Row.propTypes = {
     expandedRowIds: PropTypes.object,
     /** @returns {Object} props that will be given to VelocityTransitionGroup */
     getAnimation: PropTypes.func,
+    /** Size of the Toggle icon */
     iconSize: PropTypes.number,
     node: nodePropType,
+    /**
+     * Renders the content of this row (except child nodes)
+     * Receives all the props of the component plus `isExpanded`, `hasChildren` and `indentLeft`
+     */
     renderContent: PropTypes.func,
+    /** The current depth of this row, used to calculate indentLeft given to `renderContent` */
     depth: PropTypes.number,
+    /**
+     * Do not apply paddingLeft according to depth.
+     * You may want to apply paddingLeft in renderContent depending on how you
+     * need to implement margins and padding
+     * */
     noIndent: PropTypes.bool,
 };
 
