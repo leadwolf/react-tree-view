@@ -5,4 +5,14 @@ export const animations = {
         },
         duration: 200,
     }),
+    node: (expanded, node) => ({
+        enter: {
+            animation: 'slideDown',
+            duration: 300,
+        },
+        leave: {
+            animation: 'slideUp',
+            duration: 300,
+        },
+    }),
 };
