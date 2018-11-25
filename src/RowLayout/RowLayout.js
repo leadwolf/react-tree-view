@@ -1,24 +1,24 @@
-import './tree.scss';
+import './rowLayout.scss';
 
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Tree = ({ className, style, children }) => (
-    <div className={`rtv-tree ${className}`} style={style}>
+const RowLayout = ({ className, style, children }) => (
+    <div className={`rtv-row-layout ${className}`} style={style}>
         {children}
     </div>
 );
 
-Tree.propTypes = {
+RowLayout.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
     children: PropTypes.node,
 };
 
-Tree.defaultProps = {
+RowLayout.defaultProps = {
     className: '',
     style: undefined,
     children: null,
 };
 
-export { Tree };
+export { RowLayout };

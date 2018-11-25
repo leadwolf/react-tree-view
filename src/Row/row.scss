@@ -1,0 +1,9 @@
+.rtv-row-container {
+    display: flex;
+    flex-direction: column;
+
+    .rtv-row-content {
+        display: flex;
+        flex-direction: row;
+    }
+}

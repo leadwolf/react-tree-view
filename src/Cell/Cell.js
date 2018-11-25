@@ -1,24 +1,24 @@
-import './tree.scss';
+import './cell.scss';
 
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Tree = ({ className, style, children }) => (
-    <div className={`rtv-tree ${className}`} style={style}>
+const Cell = ({ className, style, children }) => (
+    <div className={`rtv-cell ${className}`} style={style}>
         {children}
     </div>
 );
 
-Tree.propTypes = {
+Cell.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
     children: PropTypes.node,
 };
 
-Tree.defaultProps = {
+Cell.defaultProps = {
     className: '',
     style: undefined,
     children: null,
 };
 
-export { Tree };
+export { Cell };

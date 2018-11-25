@@ -1,6 +1,6 @@
 {
     "name": "react-tree-view",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "description": "react-tree-view React component",
     "main": "lib/index.js",
     "module": "es/index.js",
@@ -10,14 +10,19 @@
         "lib",
         "umd"
     ],
+    "author": "Christopher Caroni",
+    "homepage": "https://react-tree-view.ccaroni.com",
+    "license": "MIT",
+    "repository": "https://github.com/Christopher-Caroni/react-tree-view",
+    "keywords": [
+        "react-component"
+    ],
     "scripts": {
         "build": "nwb build-react-component",
         "clean": "nwb clean-module && nwb clean-demo",
         "prepublishOnly": "npm run build",
         "start": "nwb serve-react-demo",
-        "test": "nwb test-react",
-        "test:coverage": "nwb test-react --coverage",
-        "test:watch": "nwb test-react --server",
+        "test": "jest",
         "eslint-check": "eslint --print-config .eslintrc.json | eslint-config-prettier-check",
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook"
@@ -29,7 +34,9 @@
     "devDependencies": {
         "@babel/core": "^7.1.6",
         "@storybook/addon-actions": "^4.0.8",
+        "@storybook/addon-info": "^4.0.8",
         "@storybook/addon-links": "^4.0.8",
+        "@storybook/addon-storysource": "^4.0.8",
         "@storybook/addons": "^4.0.8",
         "@storybook/react": "^4.0.8",
         "babel-loader": "^8.0.4",
@@ -40,17 +47,12 @@
         "eslint-plugin-jsx-a11y": "^6.1.1",
         "eslint-plugin-prettier": "^3.0.0",
         "eslint-plugin-react": "^7.11.0",
+        "jest": "^23.6.0",
+        "jest-webpack": "^0.5.1",
         "nwb": "0.23.x",
         "nwb-sass": "^0.9.0",
         "prettier": "^1.15.2",
         "react": "^16.6.3",
         "react-dom": "^16.6.3"
-    },
-    "author": "",
-    "homepage": "",
-    "license": "MIT",
-    "repository": "",
-    "keywords": [
-        "react-component"
-    ]
+    }
 }

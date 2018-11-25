@@ -1,0 +1,38 @@
+.story-tree {
+    .story-row-layout {
+        border-bottom: 1px solid;
+
+        .story-header-cell {
+            justify-content: center;
+        }
+    }
+
+    .story-row-table-content {
+        border-bottom: 1px solid;
+    }
+
+    .rtv-cell {
+        min-height: 30px;
+    }
+
+    .story-tree-multi-roots {
+        display: flex;
+
+        .rtv-tree {
+            border: 1px solid;
+            border-bottom: none;
+            border-right: none;
+        }
+
+        .rtv-cell {
+            border-right: 1px solid;
+        }
+        .rtv-cell:not(.main) {
+            justify-content: center;
+        }
+
+        .story-header-cell {
+            font-weight: bold;
+        }
+    }
+}
