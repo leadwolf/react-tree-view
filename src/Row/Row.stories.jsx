@@ -49,40 +49,46 @@ storiesOf('Row', module)
         </WithExpandedRowIdsState>
     ))
     .add('table example', () => (
-        <WithExpandedRowIdsState>
-            {(expandedRowIds, toggle) => (
-                <Row
-                    onClick={toggle}
-                    node={dummyNode}
-                    expandedRowIds={expandedRowIds}
-                    classes={{ content: 'story-row-table-content' }}
-                    noIndent
-                    renderContent={({ node, hasChildren, indentLeft }) => (
-                        <React.Fragment>
-                            <Cell
-                                style={{
-                                    paddingLeft: `${indentLeft}px`,
-                                }}
-                            >
-                                {hasChildren && (
-                                    <Toggle expanded={Boolean(expandedRowIds[node.id])} />
-                                )}
-
-                                <div
+        <div>
+            <div className="story-table-header">
+                <Cell>Id</Cell>
+                <Cell>Name</Cell>
+            </div>
+            <WithExpandedRowIdsState>
+                {(expandedRowIds, toggle) => (
+                    <Row
+                        onClick={toggle}
+                        node={dummyNode}
+                        expandedRowIds={expandedRowIds}
+                        classes={{ content: 'story-row-table-content' }}
+                        noIndent
+                        renderContent={({ node, hasChildren, indentLeft }) => (
+                            <React.Fragment>
+                                <Cell
                                     style={{
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        justifyContent: 'center',
-                                        paddingLeft: '10px',
+                                        paddingLeft: `${indentLeft}px`,
                                     }}
                                 >
-                                    {node.id}
-                                </div>
-                            </Cell>
-                            <Cell>{node.name}</Cell>
-                        </React.Fragment>
-                    )}
-                />
-            )}
-        </WithExpandedRowIdsState>
+                                    {hasChildren && (
+                                        <Toggle expanded={Boolean(expandedRowIds[node.id])} />
+                                    )}
+
+                                    <div
+                                        style={{
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            justifyContent: 'center',
+                                            paddingLeft: '10px',
+                                        }}
+                                    >
+                                        {node.id}
+                                    </div>
+                                </Cell>
+                                <Cell>{node.name}</Cell>
+                            </React.Fragment>
+                        )}
+                    />
+                )}
+            </WithExpandedRowIdsState>
+        </div>
     ));
