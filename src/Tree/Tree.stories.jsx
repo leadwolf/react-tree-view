@@ -1,14 +1,15 @@
 import './treeStories.scss';
 
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 import { Cell } from '../Cell';
 import { Header } from '../Header';
+import { Row } from '../Row';
 import { dummyNode } from '../stories/node';
 import { WithExpandedRowIdsState } from '../stories/WithExpandedRowIdsState';
 import { Toggle } from '../Toggle';
-import { Row } from '../Row';
 import { Tree } from './Tree';
 
 const TableRowContent = ({ node, hasChildren, indentLeft, expandedRowIds }) => (
@@ -34,7 +35,10 @@ const TableRowContent = ({ node, hasChildren, indentLeft, expandedRowIds }) => (
 
 const TableRow = (expandedRowIds, toggle) => (
     <Row
-        onClick={toggle}
+        onClick={node => {
+            action('toggle')(node);
+            toggle(node);
+        }}
         node={dummyNode}
         expandedRowIds={expandedRowIds}
         classes={{ content: 'story-row-table-content' }}
@@ -51,7 +55,10 @@ storiesOf('Tree', module)
             <WithExpandedRowIdsState
                 renderChildren={(expandedRowIds, toggle) => (
                     <Row
-                        onClick={toggle}
+                        onClick={node => {
+                            action('toggle')(node);
+                            toggle(node);
+                        }}
                         node={dummyNode}
                         expandedRowIds={expandedRowIds}
                         styles={{

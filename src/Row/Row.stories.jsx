@@ -1,5 +1,6 @@
 import './rowStories.scss';
 
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
@@ -21,7 +22,10 @@ storiesOf('Row', module)
         <WithExpandedRowIdsState
             renderChildren={(expandedRowIds, toggle) => (
                 <Row
-                    onClick={toggle}
+                    onClick={node => {
+                        action('toggle')(node);
+                        toggle(node);
+                    }}
                     node={dummyNode}
                     expandedRowIds={expandedRowIds}
                     styles={{
@@ -54,7 +58,10 @@ storiesOf('Row', module)
             <WithExpandedRowIdsState
                 renderChildren={(expandedRowIds, toggle) => (
                     <Row
-                        onClick={toggle}
+                        onClick={node => {
+                            action('toggle')(node);
+                            toggle(node);
+                        }}
                         node={dummyNode}
                         expandedRowIds={expandedRowIds}
                         classes={{ content: 'story-row-table-content' }}
