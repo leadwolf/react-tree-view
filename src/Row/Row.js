@@ -15,11 +15,13 @@ const Row = ({ node, depth, ...rest }) => {
         expandedRowIds,
         getAnimation,
         onClick,
+        noIndent,
     } = rest;
 
     const isExpanded = Boolean(expandedRowIds[node.id]);
     const hasChildren = Boolean(node.children) && Boolean(node.children.length);
     const showChildren = hasChildren && isExpanded;
+    const indentLeft = depth * 24;
 
     return (
         <div className={`rtv-row-container ${classNameRoot}`} style={styleRoot}>
@@ -29,12 +31,14 @@ const Row = ({ node, depth, ...rest }) => {
                     style={styleContent}
                     onClick={() => onClick(node)}
                 >
-                    <div
-                        style={{
-                            paddingLeft: `${depth * 24}px`,
-                        }}
-                    />
-                    {renderContent({ node, depth, ...rest, isExpanded, hasChildren })}
+                    {!noIndent && (
+                        <div
+                            style={{
+                                paddingLeft: `${indentLeft}px`,
+                            }}
+                        />
+                    )}
+                    {renderContent({ node, depth, ...rest, isExpanded, hasChildren, indentLeft })}
                 </div>
             )}
             <VelocityTransitionGroup {...getAnimation(isExpanded, node)}>
@@ -67,6 +71,7 @@ Row.propTypes = {
     node: nodePropType,
     renderContent: PropTypes.func,
     depth: PropTypes.number,
+    noIndent: PropTypes.bool,
 };
 
 Row.defaultProps = {
@@ -84,6 +89,7 @@ Row.defaultProps = {
     node: defaultNode,
     renderContent: undefined,
     depth: 0,
+    noIndent: false,
 };
 
 export { Row };
