@@ -53,5 +53,8 @@
     "repository": "",
     "keywords": [
         "react-component"
-    ]
+    ],
+    "dependencies": {
+        "@storybook/addon-storysource": "^4.0.8"
+    }
 }
