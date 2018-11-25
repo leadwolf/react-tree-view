@@ -1,32 +1,13 @@
-%cell {
-    display: flex;
-    align-items: center;
-    position: relative;
-    box-sizing: border-box;
-    min-height: 40px;
-
-    width: 200px;
-}
-
 .story {
-    .story-table-header {
+    .story-header {
         border-bottom: 1px solid;
-        display: flex;
-        flex-direction: row;
 
-        .story-row-table-content-cell {
-            @extend %cell;
+        .story-header-cell {
             justify-content: center;
         }
     }
 
-    .rtv-row-content.story-row-table-content {
+    .story-row-table-content {
         border-bottom: 1px solid;
-
-        height: auto;
-
-        .story-row-table-content-cell {
-            @extend %cell;
-        }
     }
 }

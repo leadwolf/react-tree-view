@@ -3,16 +3,12 @@ import './rowStories.scss';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
+import { Cell } from '../Cell';
+import { Header } from '../Header';
 import { dummyNode } from '../stories/node';
+import { WithExpandedRowIdsState } from '../stories/WithExpandedRowIdsState';
 import { Toggle } from '../Toggle';
 import { Row } from './Row';
-import { WithExpandedRowIdsState } from '../stories/WithExpandedRowIdsState';
-
-const Cell = ({ style, children }) => (
-    <div className="story-row-table-content-cell" style={style}>
-        {children}
-    </div>
-);
 
 storiesOf('Row', module)
     .addDecorator(storyFn => <div className="story">{storyFn()}</div>)
@@ -50,10 +46,10 @@ storiesOf('Row', module)
     ))
     .add('table example', () => (
         <div>
-            <div className="story-table-header">
-                <Cell>Id</Cell>
-                <Cell>Name</Cell>
-            </div>
+            <Header className="story-header">
+                <Cell className="story-header-cell">Id</Cell>
+                <Cell className="story-header-cell">Name</Cell>
+            </Header>
             <WithExpandedRowIdsState>
                 {(expandedRowIds, toggle) => (
                     <Row
