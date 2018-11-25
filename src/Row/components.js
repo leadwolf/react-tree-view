@@ -5,11 +5,7 @@ import { Toggle } from '../Toggle';
 
 export const DefaultContent = ({ node, hasChildren, expandedRowIds, indentLeft }) => (
     <React.Fragment>
-        <Cell
-            style={{
-                paddingLeft: `${indentLeft}px`,
-            }}
-        >
+        <Cell>
             {hasChildren && <Toggle expanded={Boolean(expandedRowIds[node.id])} />}
 
             <div
