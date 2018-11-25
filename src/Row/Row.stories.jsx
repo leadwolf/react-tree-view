@@ -24,10 +24,14 @@ storiesOf('Row', module)
                     onClick={toggle}
                     node={dummyNode}
                     expandedRowIds={expandedRowIds}
+                    styles={{
+                        content: {
+                            height: '30px',
+                        },
+                    }}
                     renderContent={({ node, hasChildren }) => (
-                        <React.Fragment>
+                        <Cell>
                             {hasChildren && <Toggle expanded={Boolean(expandedRowIds[node.id])} />}
-
                             <div
                                 style={{
                                     display: 'flex',
@@ -38,7 +42,7 @@ storiesOf('Row', module)
                             >
                                 {node.id}
                             </div>
-                        </React.Fragment>
+                        </Cell>
                     )}
                 />
             )}
