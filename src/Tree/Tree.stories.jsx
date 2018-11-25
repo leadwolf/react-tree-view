@@ -5,8 +5,8 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 import { Cell } from '../Cell';
-import { Header } from '../Header';
 import { Row } from '../Row';
+import { RowLayout } from '../RowLayout';
 import { dummyNode } from '../stories/node';
 import { WithExpandedRowIdsState } from '../stories/WithExpandedRowIdsState';
 import { Toggle } from '../Toggle';
@@ -88,25 +88,25 @@ storiesOf('Tree', module)
     ))
     .add('table example', () => (
         <Tree>
-            <Header className="story-header">
+            <RowLayout className="story-row-layout">
                 <Cell className="story-header-cell">Id</Cell>
                 <Cell className="story-header-cell">Name</Cell>
-            </Header>
+            </RowLayout>
             <WithExpandedRowIdsState renderChildren={TableRow} />
         </Tree>
     ))
     .add('multiple roots example', () => (
         <div className="story-tree-multi-roots">
             <Tree>
-                <Header className="story-header">
+                <RowLayout className="story-row-layout">
                     <Cell className="story-header-cell">Id</Cell>
                     <Cell className="story-header-cell">Name</Cell>
-                </Header>
+                </RowLayout>
                 <WithExpandedRowIdsState renderChildren={TableRow} />
-                <Header className="story-header">
+                <RowLayout className="story-row-layout">
                     <Cell className="story-header-cell">Id</Cell>
                     <Cell className="story-header-cell">Name</Cell>
-                </Header>
+                </RowLayout>
                 <WithExpandedRowIdsState renderChildren={TableRow} />
             </Tree>
         </div>

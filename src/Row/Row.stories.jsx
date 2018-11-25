@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 import { Cell } from '../Cell';
-import { Header } from '../Header';
+import { RowLayout } from '../RowLayout';
 import { dummyNode } from '../stories/node';
 import { WithExpandedRowIdsState } from '../stories/WithExpandedRowIdsState';
 import { Toggle } from '../Toggle';
@@ -84,10 +84,10 @@ storiesOf('Row', module)
     ))
     .add('table example', () => (
         <div>
-            <Header className="story-header">
+            <RowLayout className="story-row-layout">
                 <Cell className="story-header-cell">Id</Cell>
                 <Cell className="story-header-cell">Name</Cell>
-            </Header>
+            </RowLayout>
             <WithExpandedRowIdsState
                 renderChildren={(expandedRowIds, toggle) => (
                     <Row

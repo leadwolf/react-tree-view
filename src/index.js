@@ -1,7 +1,7 @@
 import { Tree } from './Tree';
 
 export * from './Cell';
-export * from './Header';
+export * from './RowLayout';
 export * from './icons/Add';
 export * from './icons/Remove';
 export * from './Toggle';
