@@ -48,8 +48,8 @@ storiesOf('Tree', module)
     .add('default', () => <Tree />)
     .add('stateful example', () => (
         <Tree>
-            <WithExpandedRowIdsState>
-                {(expandedRowIds, toggle) => (
+            <WithExpandedRowIdsState
+                renderChildren={(expandedRowIds, toggle) => (
                     <Row
                         onClick={toggle}
                         node={dummyNode}
@@ -75,7 +75,7 @@ storiesOf('Tree', module)
                         )}
                     />
                 )}
-            </WithExpandedRowIdsState>
+            />
         </Tree>
     ))
     .add('table example', () => (
@@ -84,7 +84,7 @@ storiesOf('Tree', module)
                 <Cell className="story-header-cell">Id</Cell>
                 <Cell className="story-header-cell">Name</Cell>
             </Header>
-            <WithExpandedRowIdsState>{TableRow}</WithExpandedRowIdsState>
+            <WithExpandedRowIdsState renderChildren={TableRow} />
         </Tree>
     ))
     .add('multiple table example', () => (
@@ -93,11 +93,11 @@ storiesOf('Tree', module)
                 <Cell className="story-header-cell">Id</Cell>
                 <Cell className="story-header-cell">Name</Cell>
             </Header>
-            <WithExpandedRowIdsState>{TableRow}</WithExpandedRowIdsState>
+            <WithExpandedRowIdsState renderChildren={TableRow} />
             <Header className="story-header">
                 <Cell className="story-header-cell">Id</Cell>
                 <Cell className="story-header-cell">Name</Cell>
             </Header>
-            <WithExpandedRowIdsState>{TableRow}</WithExpandedRowIdsState>
+            <WithExpandedRowIdsState renderChildren={TableRow} />
         </Tree>
     ));

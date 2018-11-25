@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 class WithExpandedRowIdsState extends React.Component {
@@ -16,8 +17,18 @@ class WithExpandedRowIdsState extends React.Component {
     render() {
         const { expandedRowIds } = this.state;
 
-        return this.props.children(expandedRowIds, this.toggle);
+        return this.props.renderChildren(expandedRowIds, this.toggle);
     }
 }
+
+WithExpandedRowIdsState.propTypes = {
+    /**
+     * This function will be called with params `expandedRowIds`, `toggle`
+     * - expandedRowIds: object map of node ids. The ids are truthy if they are expanded
+     * - toggle: function that receives the clicked node as parameter and will handle togging
+     * the expansion of that node
+     */
+    renderChildren: PropTypes.func,
+};
 
 export { WithExpandedRowIdsState };

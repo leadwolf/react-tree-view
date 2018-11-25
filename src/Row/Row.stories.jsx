@@ -18,8 +18,8 @@ storiesOf('Row', module)
         <Row node={dummyNode} renderContent={({ node }) => <div>{node.id}</div>} />
     ))
     .add('stateful example', () => (
-        <WithExpandedRowIdsState>
-            {(expandedRowIds, toggle) => (
+        <WithExpandedRowIdsState
+            renderChildren={(expandedRowIds, toggle) => (
                 <Row
                     onClick={toggle}
                     node={dummyNode}
@@ -43,7 +43,7 @@ storiesOf('Row', module)
                     )}
                 />
             )}
-        </WithExpandedRowIdsState>
+        />
     ))
     .add('table example', () => (
         <div>
@@ -51,8 +51,8 @@ storiesOf('Row', module)
                 <Cell className="story-header-cell">Id</Cell>
                 <Cell className="story-header-cell">Name</Cell>
             </Header>
-            <WithExpandedRowIdsState>
-                {(expandedRowIds, toggle) => (
+            <WithExpandedRowIdsState
+                renderChildren={(expandedRowIds, toggle) => (
                     <Row
                         onClick={toggle}
                         node={dummyNode}
@@ -83,6 +83,6 @@ storiesOf('Row', module)
                         )}
                     />
                 )}
-            </WithExpandedRowIdsState>
+            />
         </div>
     ));
