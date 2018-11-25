@@ -31,7 +31,7 @@ const Row = ({ node, depth, ...rest }) => {
                 >
                     <div
                         style={{
-                            paddingLeft: `${depth * 24 + (depth ? 10 : 0)}px`,
+                            paddingLeft: `${depth * 24}px`,
                         }}
                     />
                     {renderContent({ node, depth, ...rest, isExpanded, hasChildren })}

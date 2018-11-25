@@ -4,56 +4,38 @@ import React from 'react';
 import { dummyNode } from '../stories/node';
 import { Toggle } from '../Toggle';
 import { Row } from './Row';
-
-class StatefulRow extends React.Component {
-    state = {
-        expandedRowIds: {},
-    };
-
-    toggle = node =>
-        this.setState(({ expandedRowIds }) => ({
-            expandedRowIds: {
-                ...expandedRowIds,
-                [node.id]: !Boolean(expandedRowIds[node.id]),
-            },
-        }));
-
-    render() {
-        const { expandedRowIds } = this.state;
-
-        return (
-            <Row
-                onClick={this.toggle}
-                node={dummyNode}
-                expandedRowIds={expandedRowIds}
-                renderContent={({ node, hasChildren }) => (
-                    <React.Fragment>
-                        {hasChildren && <Toggle expanded={Boolean(expandedRowIds[node.id])} />}
-
-                        {hasChildren && (
-                            <div
-                                style={{
-                                    paddingLeft: '10px',
-                                }}
-                            />
-                        )}
-                        <div
-                            style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                            }}
-                        >
-                            {node.id}
-                        </div>
-                    </React.Fragment>
-                )}
-            />
-        );
-    }
-}
+import { WithExpandedRowIdsState } from '../stories/WithExpandedRowIdsState';
 
 storiesOf('Row', module)
     .add('default: !expanded', () => <Row />)
     .add('with node', () => <Row node={dummyNode} />)
-    .add('stateful example', () => <StatefulRow />);
+    .add('with renderContent', () => (
+        <Row node={dummyNode} renderContent={({ node }) => <div>{node.id}</div>} />
+    ))
+    .add('stateful example', () => (
+        <WithExpandedRowIdsState>
+            {(expandedRowIds, toggle) => (
+                <Row
+                    onClick={toggle}
+                    node={dummyNode}
+                    expandedRowIds={expandedRowIds}
+                    renderContent={({ node, hasChildren }) => (
+                        <React.Fragment>
+                            {hasChildren && <Toggle expanded={Boolean(expandedRowIds[node.id])} />}
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'center',
+                                    paddingLeft: '10px',
+                                }}
+                            >
+                                {node.id}
+                            </div>
+                        </React.Fragment>
+                    )}
+                />
+            )}
+        </WithExpandedRowIdsState>
+    ));
