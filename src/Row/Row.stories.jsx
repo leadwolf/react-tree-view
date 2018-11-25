@@ -34,9 +34,6 @@ storiesOf('Row', module)
                             {hasChildren && <Toggle expanded={Boolean(expandedRowIds[node.id])} />}
                             <div
                                 style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    justifyContent: 'center',
                                     paddingLeft: '10px',
                                 }}
                             >
@@ -75,9 +72,6 @@ storiesOf('Row', module)
 
                                     <div
                                         style={{
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            justifyContent: 'center',
                                             paddingLeft: '10px',
                                         }}
                                     >
