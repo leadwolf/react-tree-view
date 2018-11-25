@@ -45,10 +45,6 @@ storiesOf('Row', module)
         <WithExpandedRowIdsState
             renderChildren={(expandedRowIds, toggle) => (
                 <Row
-                    onClick={node => {
-                        action('toggle')(node);
-                        toggle(node);
-                    }}
                     node={dummyNode}
                     expandedRowIds={expandedRowIds}
                     styles={{
@@ -61,9 +57,9 @@ storiesOf('Row', module)
                             <Cell>
                                 {hasChildren && (
                                     <button
-                                        onClick={clickdNode => {
-                                            action('toggle')(clickdNode);
-                                            toggle(clickdNode);
+                                        onClick={() => {
+                                            action('toggle')(node);
+                                            toggle(node);
                                         }}
                                         type="button"
                                     >
