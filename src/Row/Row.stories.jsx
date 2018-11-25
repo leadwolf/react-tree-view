@@ -12,7 +12,7 @@ import { Toggle } from '../Toggle';
 import { Row } from './Row';
 
 storiesOf('Row', module)
-    .addDecorator(storyFn => <div className="story">{storyFn()}</div>)
+    .addDecorator(storyFn => <div className="story-row">{storyFn()}</div>)
     .add('default: !expanded', () => <Row />)
     .add('with node, default render', () => <Row node={dummyNode} />)
     .add('stateful, default render', () => (

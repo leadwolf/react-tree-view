@@ -48,7 +48,7 @@ const TableRow = (expandedRowIds, toggle) => (
 );
 
 storiesOf('Tree', module)
-    .addDecorator(storyFn => <div className="story">{storyFn()}</div>)
+    .addDecorator(storyFn => <div className="story-tree">{storyFn()}</div>)
     .add('default', () => <Tree />)
     .add('stateful example', () => (
         <Tree>
