@@ -11,6 +11,27 @@ import { Toggle } from '../Toggle';
 import { Row } from '../Row';
 import { Tree } from './Tree';
 
+const TableRowContent = ({ node, hasChildren, indentLeft, expandedRowIds }) => (
+    <React.Fragment>
+        <Cell
+            style={{
+                paddingLeft: `${indentLeft}px`,
+            }}
+        >
+            {hasChildren && <Toggle expanded={Boolean(expandedRowIds[node.id])} />}
+
+            <div
+                style={{
+                    paddingLeft: '10px',
+                }}
+            >
+                {node.id}
+            </div>
+        </Cell>
+        <Cell>{node.name}</Cell>
+    </React.Fragment>
+);
+
 storiesOf('Tree', module)
     .addDecorator(storyFn => <div className="story">{storyFn()}</div>)
     .add('default', () => <Tree />)
@@ -60,28 +81,43 @@ storiesOf('Tree', module)
                         expandedRowIds={expandedRowIds}
                         classes={{ content: 'story-row-table-content' }}
                         noIndent
-                        renderContent={({ node, hasChildren, indentLeft }) => (
-                            <React.Fragment>
-                                <Cell
-                                    style={{
-                                        paddingLeft: `${indentLeft}px`,
-                                    }}
-                                >
-                                    {hasChildren && (
-                                        <Toggle expanded={Boolean(expandedRowIds[node.id])} />
-                                    )}
-
-                                    <div
-                                        style={{
-                                            paddingLeft: '10px',
-                                        }}
-                                    >
-                                        {node.id}
-                                    </div>
-                                </Cell>
-                                <Cell>{node.name}</Cell>
-                            </React.Fragment>
-                        )}
+                        renderContent={TableRowContent}
+                    />
+                )}
+            </WithExpandedRowIdsState>
+        </Tree>
+    ))
+    .add('multiple table example', () => (
+        <Tree>
+            <Header className="story-header">
+                <Cell className="story-header-cell">Id</Cell>
+                <Cell className="story-header-cell">Name</Cell>
+            </Header>
+            <WithExpandedRowIdsState>
+                {(expandedRowIds, toggle) => (
+                    <Row
+                        onClick={toggle}
+                        node={dummyNode}
+                        expandedRowIds={expandedRowIds}
+                        classes={{ content: 'story-row-table-content' }}
+                        noIndent
+                        renderContent={TableRowContent}
+                    />
+                )}
+            </WithExpandedRowIdsState>
+            <Header className="story-header">
+                <Cell className="story-header-cell">Id</Cell>
+                <Cell className="story-header-cell">Name</Cell>
+            </Header>
+            <WithExpandedRowIdsState>
+                {(expandedRowIds, toggle) => (
+                    <Row
+                        onClick={toggle}
+                        node={dummyNode}
+                        expandedRowIds={expandedRowIds}
+                        classes={{ content: 'story-row-table-content' }}
+                        noIndent
+                        renderContent={TableRowContent}
                     />
                 )}
             </WithExpandedRowIdsState>
