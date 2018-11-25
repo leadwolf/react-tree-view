@@ -14,11 +14,34 @@ import { Row } from './Row';
 storiesOf('Row', module)
     .addDecorator(storyFn => <div className="story">{storyFn()}</div>)
     .add('default: !expanded', () => <Row />)
-    .add('with node', () => <Row node={dummyNode} />)
-    .add('with renderContent', () => (
-        <Row node={dummyNode} renderContent={({ node }) => <div>{node.id}</div>} />
+    .add('with node, default render', () => <Row node={dummyNode} />)
+    .add('stateful, default render', () => (
+        <WithExpandedRowIdsState
+            renderChildren={(expandedRowIds, toggle) => (
+                <Row
+                    onClick={node => {
+                        action('toggle')(node);
+                        toggle(node);
+                    }}
+                    node={dummyNode}
+                    expandedRowIds={expandedRowIds}
+                />
+            )}
+        />
     ))
-    .add('stateful example', () => (
+    .add('custom render', () => (
+        <Row
+            node={dummyNode}
+            renderContent={({ node }) => (
+                <div>
+                    <button>toggle</button>
+                    <div>{node.id}</div>
+                    <div>As you can see, you can customise the content of a node</div>
+                </div>
+            )}
+        />
+    ))
+    .add('stateful, custom render', () => (
         <WithExpandedRowIdsState
             renderChildren={(expandedRowIds, toggle) => (
                 <Row
@@ -34,16 +57,30 @@ storiesOf('Row', module)
                         },
                     }}
                     renderContent={({ node, hasChildren }) => (
-                        <Cell>
-                            {hasChildren && <Toggle expanded={Boolean(expandedRowIds[node.id])} />}
-                            <div
-                                style={{
-                                    paddingLeft: '10px',
-                                }}
-                            >
-                                {node.id}
-                            </div>
-                        </Cell>
+                        <React.Fragment>
+                            <Cell>
+                                {hasChildren && (
+                                    <button
+                                        onClick={clickdNode => {
+                                            action('toggle')(clickdNode);
+                                            toggle(clickdNode);
+                                        }}
+                                        type="button"
+                                    >
+                                        toggle
+                                    </button>
+                                )}
+                                <div
+                                    style={{
+                                        paddingLeft: '10px',
+                                        width: '200px',
+                                    }}
+                                >
+                                    {node.id}
+                                </div>
+                            </Cell>
+                            <Cell>{node.name}</Cell>
+                        </React.Fragment>
                     )}
                 />
             )}
